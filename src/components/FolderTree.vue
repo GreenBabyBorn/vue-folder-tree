@@ -40,9 +40,9 @@ const findFolder = (folders: Folder[], id: number): Folder | null => {
     <li v-for="folder in folders" :key="folder.id">
       <div @click="onSelect(folder.id)" :class="{ selected: selectedId === folder.id }">
         <span @click.stop="toggle(folder.id)">
-          <span v-if="folder.children && folder.children.length">
+          <button class="btn" v-if="folder.children && folder.children.length">
             {{ folder.isOpen ? '∨' : '>' }}
-          </span>
+          </button>
         </span>
         {{ folder.name }}
       </div>
@@ -59,6 +59,9 @@ const findFolder = (folders: Folder[], id: number): Folder | null => {
 <style scoped>
 .selected {
   font-weight: bold;
+}
+.btn {
+  cursor: pointer;
 }
 ul {
   list-style: none;
